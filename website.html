@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vansh Rajesh Badgayya | Web Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0d6efd;
+      --dark-bg: #1f1f1f;
+      --light-bg: #f9f9f9;
+      --text-color: #333;
+      --accent-color: #007bff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background-color: var(--light-bg);
+      color: var(--text-color);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(to right, #0d6efd, #5a67d8);
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      opacity: 0.9;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      background-color: #fff;
+      padding: 15px 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: var(--primary-color);
+      bottom: -3px;
+      left: 0;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: var(--accent-color);
+      text-align: center;
+    }
+
+    .about p, .projects p {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+    .skills ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .skills li {
+      background: var(--primary-color);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    .skills li:hover {
+      background: #0056b3;
+    }
+
+    .projects article {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 25px;
+      border-left: 6px solid var(--accent-color);
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .projects article:hover {
+      transform: translateY(-5px);
+    }
+
+    .projects h3 {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background: var(--dark-bg);
+      color: #aaa;
+      text-align: center;
+      padding: 25px 20px;
+      font-size: 0.95rem;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      section {
+        padding: 40px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Vansh Rajesh Badgayya</h1>
+    <p>Web Developer | JavaScript Enthusiast | UI/UX Explorer</p>
+  </header>
+
+  <nav>
+    <a href="#about">About Me</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+  </nav>
+
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+      I’m a passionate web developer with a strong foundation in front-end technologies and a knack for building interactive, user-friendly interfaces. I hold a Bachelor's degree in Computer Science and have experience working on diverse projects during internships and personal development time.
+    </p>
+    <p>
+      My journey into web development started with curiosity and a love for design and technology. Since then, I’ve worked with HTML, CSS, JavaScript, and frameworks like React to create modern and responsive websites.
+    </p>
+    <p>
+      I’m always excited to learn new technologies and take on creative challenges.
+    </p>
+  </section>
+
+  <section id="projects" class="projects">
+    <h2>Projects</h2>
+    <article>
+      <h3>Weather App</h3>
+      <p>A responsive weather application built using HTML, CSS, and JavaScript that fetches live weather data using an API and displays it neatly with icons and location-based updates.</p>
+    </article>
+    <article>
+      <h3>Portfolio Website</h3>
+      <p>This very portfolio is a showcase of my design and front-end skills, built using clean HTML/CSS with a strong focus on layout, usability, and responsive design.</p>
+    </article>
+    <article>
+      <h3>To-Do List Web App</h3>
+      <p>A JavaScript-powered application that allows users to manage daily tasks. Features include adding, editing, deleting, and storing tasks in localStorage.</p>
+    </article>
+  </section>
+
+  <section id="skills" class="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML5</li>
+      <li>CSS3</li>
+      <li>JavaScript (ES6+)</li>
+      <li>React.js</li>
+      <li>Git & GitHub</li>
+      <li>Responsive Web Design</li>
+      <li>UI/UX Principles</li>
+    </ul>
+  </section>
+
+  <footer>
+    &copy; 2025 Vansh Rajesh Badgayya. All rights reserved.
+  </footer>
+</body>
+</html>
