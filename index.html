@@ -4,225 +4,254 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vansh Rajesh Badgayya | Web Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --primary-color: #0d6efd;
-      --dark-bg: #1f1f1f;
-      --light-bg: #f9f9f9;
-      --text-color: #333;
-      --accent-color: #007bff;
+      --primary: #2563eb;
+      --dark: #111827;
+      --light: #f9fafb;
+      --gray: #6b7280;
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      scroll-behavior: smooth;
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
-      background-color: var(--light-bg);
-      color: var(--text-color);
+      background: var(--light);
+      color: var(--dark);
       line-height: 1.7;
     }
 
     header {
-      background: linear-gradient(to right, #0d6efd, #5a67d8);
-      color: #fff;
-      padding: 60px 20px;
+      background: linear-gradient(to right, #2563eb, #4f46e5);
+      color: white;
+      padding: 80px 20px;
       text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     header h1 {
       font-size: 3rem;
-      margin-bottom: 10px;
+      font-weight: 700;
     }
 
     header p {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
+      margin: 10px 0 20px;
       opacity: 0.9;
     }
 
+    .links a {
+      color: white;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 2px solid transparent;
+    }
+
+    .links a:hover {
+      border-bottom: 2px solid white;
+    }
+
     nav {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      background-color: #fff;
-      padding: 15px 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       position: sticky;
       top: 0;
+      background: white;
+      display: flex;
+      justify-content: center;
+      gap: 35px;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       z-index: 100;
     }
 
     nav a {
-      color: var(--text-color);
       text-decoration: none;
+      color: var(--dark);
       font-weight: 600;
-      position: relative;
     }
 
-    nav a::after {
-      content: "";
-      position: absolute;
-      width: 0%;
-      height: 2px;
-      background: var(--primary-color);
-      bottom: -3px;
-      left: 0;
-      transition: 0.3s ease;
-    }
-
-    nav a:hover::after {
-      width: 100%;
+    nav a:hover {
+      color: var(--primary);
     }
 
     section {
-      padding: 60px 20px;
       max-width: 1000px;
       margin: auto;
+      padding: 70px 20px;
     }
 
     h2 {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-      color: var(--accent-color);
       text-align: center;
+      font-size: 2.4rem;
+      color: var(--primary);
+      margin-bottom: 40px;
     }
 
-    .about p, .projects p {
-      font-size: 1.1rem;
-      margin-bottom: 15px;
-      text-align: justify;
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      margin-bottom: 25px;
+    }
+
+    .projects .card:hover {
+      transform: translateY(-5px);
+      transition: 0.3s;
+    }
+
+    .projects h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .projects a {
+      display: inline-block;
+      margin-top: 10px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
     }
 
     .skills ul {
       list-style: none;
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 15px;
-      justify-content: center;
-      padding: 0;
     }
 
     .skills li {
-      background: var(--primary-color);
-      color: #fff;
-      padding: 12px 20px;
-      border-radius: 30px;
+      background: var(--primary);
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
       font-weight: 500;
-      transition: background 0.3s ease;
-    }
-
-    .skills li:hover {
-      background: #0056b3;
-    }
-
-    .projects article {
-      background: #fff;
-      padding: 25px;
-      margin-bottom: 25px;
-      border-left: 6px solid var(--accent-color);
-      border-radius: 10px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease;
-    }
-
-    .projects article:hover {
-      transform: translateY(-5px);
-    }
-
-    .projects h3 {
-      color: var(--primary-color);
-      font-size: 1.5rem;
-      margin-bottom: 10px;
     }
 
     footer {
-      background: var(--dark-bg);
-      color: #aaa;
+      background: var(--dark);
+      color: #9ca3af;
       text-align: center;
-      padding: 25px 20px;
-      font-size: 0.95rem;
+      padding: 30px 15px;
       margin-top: 40px;
     }
 
-    @media (max-width: 600px) {
+    @media(max-width:600px){
       header h1 {
-        font-size: 2rem;
-      }
-
-      nav {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      section {
-        padding: 40px 15px;
+        font-size: 2.2rem;
       }
     }
   </style>
 </head>
+
 <body>
 
-  <header>
-    <h1>Vansh Rajesh Badgayya</h1>
-    <p>Web Developer | JavaScript Enthusiast | UI/UX Explorer</p>
-  </header>
+<header>
+  <h1>Vansh Rajesh Badgayya</h1>
+  <p>Web Developer | Java | JavaScript | MySQL</p>
 
-  <nav>
-    <a href="#about">About Me</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-  </nav>
+  <div class="links">
+    <a href="https://linkedin.com/in/vansh-badgayya-3ba498331" target="_blank">LinkedIn</a>
+    <a href="https://github.com/Vansh360" target="_blank">GitHub</a>
+    <a href="mailto:badgayyavansh@gmail.com">Email</a>
+  </div>
+</header>
 
-  <section id="about" class="about">
-    <h2>About Me</h2>
+<nav>
+  <a href="#about">About</a>
+  <a href="#education">Education</a>
+  <a href="#projects">Projects</a>  
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="about">
+  <h2>Career Summary</h2>
+  <div class="card">
     <p>
-      I’m a passionate web developer with a strong foundation in front-end technologies and a knack for building interactive, user-friendly interfaces. I hold a Bachelor's degree in Computer Science and have experience working on diverse projects during internships and personal development time.
+      Enthusiastic Computer Science student with a keen interest in web development,
+      Java programming, and database management. Skilled in building responsive web
+      interfaces, working with APIs, and using MySQL for data handling.
+      Actively exploring the MERN stack and Data Structures & Algorithms through
+      self-learning and hands-on projects. Aspiring to grow as a full-stack or backend developer.
     </p>
+  </div>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <div class="card">
+    <h3>Shri Ramdeobaba College of Engineering & Management, Nagpur</h3>
+    <p>B.E. in Electronics and Computer Science Engineering</p>
+    <p><strong>Duration:</strong> Aug 2023 – Present</p>
+    <p><strong>CGPA:</strong> 8.71 (Minor in IT)</p>
+  </div>
+</section>
+
+<section id="projects" class="projects">
+  <h2>Projects</h2>
+
+  <div class="card">
+    <h3>E-Commerce Platform (In Development)</h3>
     <p>
-      My journey into web development started with curiosity and a love for design and technology. Since then, I’ve worked with HTML, CSS, JavaScript, and frameworks like React to create modern and responsive websites.
+      Online platform connecting sellers and buyers. Features include user-responsive design
+      and implemented dark mode for improved UX.
     </p>
+    <a href="https://vansh360.github.io/Shopping-Site/" target="_blank">Live Project</a>
+  </div>
+
+  <div class="card">
+    <h3>Weather App (API Based)</h3>
     <p>
-      I’m always excited to learn new technologies and take on creative challenges.
+      Fetches real-time data from public APIs using JavaScript fetch().
+      Displays weather information dynamically on the webpage.
     </p>
-  </section>
+    <a href="https://vansh360.github.io/Weather/" target="_blank">Live Project</a>
+  </div>
 
-  <section id="projects" class="projects">
-    <h2>Projects</h2>
-    <article>
-      <h3>Weather App</h3>
-      <p>A responsive weather application built using HTML, CSS, and JavaScript that fetches live weather data using an API and displays it neatly with icons and location-based updates.</p>
-    </article>
-    <article>
-      <h3>Portfolio Website</h3>
-      <p>This very portfolio is a showcase of my design and front-end skills, built using clean HTML/CSS with a strong focus on layout, usability, and responsive design.</p>
-    </article>
-    <article>
-      <h3>To-Do List Web App</h3>
-      <p>A JavaScript-powered application that allows users to manage daily tasks. Features include adding, editing, deleting, and storing tasks in localStorage.</p>
-    </article>
-  </section>
+  <div class="card">
+    <h3>Tic-Tac-Toe Web Application</h3>
+    <p>
+      Built using HTML, CSS, and JavaScript. Implements game logic, user interaction,
+      and win condition checks.
+    </p>
+    <a href="https://vansh360.github.io/Tic-Tac-Toe/" target="_blank">Live Project</a>
+  </div>
+</section>
 
-  <section id="skills" class="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>HTML5</li>
-      <li>CSS3</li>
-      <li>JavaScript (ES6+)</li>
-      <li>React.js</li>
-      <li>Git & GitHub</li>
-      <li>Responsive Web Design</li>
-      <li>UI/UX Principles</li>
-    </ul>
-  </section>
+<section id="skills" class="skills">
+  <h2>Skills</h2>
+  <ul>
+    <li>Java</li>
+    <li>JavaScript</li>
+    <li>HTML & CSS</li>
+    <li>MySQL</li>
+    <li>API Integration</li>
+    <li>Responsive Web Design</li>
+    <li>Data Structures & Algorithms (Java)</li>
+    <li>Git & GitHub</li>
+  </ul>
+</section>
 
-  <footer>
-    &copy; 2025 Vansh Rajesh Badgayya. All rights reserved.
-  </footer>
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="card">
+    <p><strong>Email:</strong> badgayyavansh@gmail.com</p>
+    <p><strong>Phone:</strong> +91-8237910787</p>
+    <p><strong>Location:</strong> Nagpur, Maharashtra, India</p>
+  </div>
+</section>
+
+<footer>
+  © 2025 Vansh Badgayya | Portfolio Website
+</footer>
+
 </body>
 </html>
