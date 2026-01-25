@@ -3,255 +3,734 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vansh Rajesh Badgayya | Web Developer</title>
+  <title>Vansh Badgayya | Portfolio</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --primary: #2563eb;
-      --dark: #111827;
-      --light: #f9fafb;
-      --gray: #6b7280;
+    :root{
+      --bg:#0b1020;
+      --card: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.14);
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --primary:#60a5fa;
+      --primary2:#a78bfa;
+      --shadow: 0 20px 50px rgba(0,0,0,.35);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:"Poppins",sans-serif;
     }
 
-    body {
-      background: var(--light);
-      color: var(--dark);
-      line-height: 1.7;
+    body{
+      background: radial-gradient(1200px 600px at 20% 10%, rgba(96,165,250,.25), transparent 60%),
+                  radial-gradient(1000px 600px at 90% 30%, rgba(167,139,250,.25), transparent 60%),
+                  linear-gradient(180deg, #070a14, #0b1020 60%);
+      color: var(--text);
+      line-height:1.7;
+      overflow-x:hidden;
     }
 
-    header {
-      background: linear-gradient(to right, #2563eb, #4f46e5);
-      color: white;
-      padding: 80px 20px;
-      text-align: center;
+    a{ color:inherit; text-decoration:none; }
+
+    /* container */
+    .container{
+      width:min(1100px, 92%);
+      margin:auto;
     }
 
-    header h1 {
-      font-size: 3rem;
-      font-weight: 700;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      margin: 10px 0 20px;
-      opacity: 0.9;
-    }
-
-    .links a {
-      color: white;
-      margin: 0 12px;
-      text-decoration: none;
-      font-weight: 500;
-      border-bottom: 2px solid transparent;
-    }
-
-    .links a:hover {
-      border-bottom: 2px solid white;
-    }
-
-    nav {
+    /* TOP NAV */
+    .nav{
       position: sticky;
       top: 0;
-      background: white;
-      display: flex;
-      justify-content: center;
-      gap: 35px;
-      padding: 15px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      z-index: 100;
+      z-index: 200;
+      background: rgba(11,16,32,0.55);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
-    nav a {
-      text-decoration: none;
-      color: var(--dark);
-      font-weight: 600;
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
     }
 
-    nav a:hover {
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      letter-spacing:0.5px;
+    }
+
+    .brand-badge{
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      background: linear-gradient(135deg, var(--primary), var(--primary2));
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      color:#0b1020;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+
+    .nav-links a{
+      color: var(--muted);
+      font-weight:600;
+      font-size:0.95rem;
+      padding:8px 10px;
+      border-radius:10px;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover{
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+    }
+
+    .nav-btn{
+      display:none;
+      border:1px solid rgba(255,255,255,0.12);
+      padding:10px 12px;
+      border-radius:12px;
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      cursor:pointer;
+      font-weight:700;
+    }
+
+    /* HERO */
+    .hero{
+      padding: 65px 0 40px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 26px;
+      align-items:stretch;
+    }
+
+    .hero-card{
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .glow{
+      position:absolute;
+      inset:-40px;
+      background: radial-gradient(circle at 20% 20%, rgba(96,165,250,.18), transparent 55%),
+                  radial-gradient(circle at 80% 40%, rgba(167,139,250,.18), transparent 55%);
+      filter: blur(18px);
+      z-index:0;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:1;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.10);
+      color: var(--muted);
+      font-weight:600;
+      font-size:0.9rem;
+      width:fit-content;
+    }
+
+    .hero h1{
+      margin-top:14px;
+      font-size: clamp(2rem, 3.5vw, 3.1rem);
+      line-height:1.15;
+      letter-spacing:0.2px;
+    }
+
+    .hero h1 span{
+      background: linear-gradient(90deg, var(--primary), var(--primary2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p{
+      margin-top: 14px;
+      color: var(--muted);
+      max-width: 62ch;
+    }
+
+    .cta{
+      margin-top: 18px;
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn{
+      padding: 11px 15px;
+      border-radius: 14px;
+      font-weight:700;
+      font-size:0.95rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      cursor:pointer;
+      transition: .25s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .btn:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.10);
+    }
+
+    .btn-primary{
+      border:none;
+      background: linear-gradient(135deg, var(--primary), var(--primary2));
+      color:#0b1020;
+    }
+
+    .btn-primary:hover{
+      filter: brightness(1.05);
+    }
+
+    /* SIDE CARD */
+    .side-card{
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:16px;
+    }
+
+    .profile{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .avatar{
+      width:56px;
+      height:56px;
+      border-radius:18px;
+      background: linear-gradient(135deg, var(--primary), var(--primary2));
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      color:#0b1020;
+      font-size:1.1rem;
+    }
+
+    .profile h3{
+      font-size:1.05rem;
+      margin-bottom:2px;
+    }
+
+    .profile small{
+      color: var(--muted);
+      font-weight:600;
+    }
+
+    .mini-info{
+      display:grid;
+      gap:10px;
+      margin-top: 12px;
+    }
+
+    .info-row{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 14px;
+      border-radius:14px;
+      background: rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.10);
+      color: var(--muted);
+      font-weight:600;
+      font-size:0.92rem;
+    }
+
+    .info-row span{
+      color: var(--text);
+      font-weight:700;
+    }
+
+    /* SECTION */
+    .section{
+      padding: 55px 0;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom: 18px;
+    }
+
+    .section-title h2{
+      font-size: clamp(1.5rem, 2.2vw, 2.1rem);
+    }
+
+    .section-title p{
+      color: var(--muted);
+      font-weight:600;
+      font-size:0.95rem;
+      max-width: 55ch;
+    }
+
+    /* GRID CARDS */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .card{
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow: var(--shadow);
+      padding:20px;
+      transition: .25s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card:hover{
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,0.22);
+    }
+
+    .card h3{
+      color: var(--text);
+      margin-bottom: 6px;
+      font-size:1.1rem;
+    }
+
+    .card p{
+      color: var(--muted);
+      font-size:0.95rem;
+    }
+
+    .tags{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .tag{
+      padding:7px 10px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:0.78rem;
+      background: rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.12);
+      color: var(--muted);
+    }
+
+    .card a.project-link{
+      margin-top: 14px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-weight:700;
       color: var(--primary);
     }
 
-    section {
-      max-width: 1000px;
-      margin: auto;
-      padding: 70px 20px;
+    .card a.project-link:hover{
+      text-decoration: underline;
     }
 
-    h2 {
-      text-align: center;
-      font-size: 2.4rem;
-      color: var(--primary);
-      margin-bottom: 40px;
-    }
-
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-      margin-bottom: 25px;
-    }
-
-    .projects .card:hover {
-      transform: translateY(-5px);
-      transition: 0.3s;
-    }
-
-    .projects h3 {
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
-
-    .projects a {
-      display: inline-block;
+    /* SKILLS */
+    .skill-wrap{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
       margin-top: 10px;
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
     }
 
-    .skills ul {
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
+    .skill-chip{
+      padding:10px 14px;
+      border-radius:14px;
+      background: rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.12);
+      color: var(--text);
+      font-weight:700;
+      transition: .25s ease;
     }
 
-    .skills li {
-      background: var(--primary);
-      color: white;
-      padding: 12px;
-      border-radius: 8px;
-      text-align: center;
-      font-weight: 500;
+    .skill-chip:hover{
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,0.22);
     }
 
-    footer {
-      background: var(--dark);
-      color: #9ca3af;
-      text-align: center;
-      padding: 30px 15px;
-      margin-top: 40px;
+    /* FOOTER */
+    footer{
+      padding: 30px 0;
+      color: var(--muted);
+      border-top:1px solid rgba(255,255,255,0.08);
+      text-align:center;
+      font-weight:600;
     }
 
-    @media(max-width:600px){
-      header h1 {
-        font-size: 2.2rem;
+    /* RESPONSIVE */
+    @media(max-width: 900px){
+      .hero-grid{
+        grid-template-columns: 1fr;
+      }
+      .grid{
+        grid-template-columns: repeat(2, 1fr);
       }
     }
+
+    @media(max-width: 600px){
+      .nav-btn{
+        display:inline-flex;
+      }
+
+      .nav-links{
+        position:absolute;
+        left:0;
+        right:0;
+        top:65px;
+        background: rgba(11,16,32,0.95);
+        backdrop-filter: blur(12px);
+        border-top:1px solid rgba(255,255,255,0.08);
+        padding: 14px;
+        display:none;
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .nav-links.active{
+        display:flex;
+      }
+
+      .grid{
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .project-link{
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.project-link:hover{
+  text-decoration: underline;
+}
+
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Vansh Rajesh Badgayya</h1>
-  <p>Web Developer | Java | JavaScript | MySQL</p>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="brand-badge">V</div>
+        <div>
+          Vansh <span style="color:var(--muted)">Badgayya</span>
+        </div>
+      </div>
 
-  <div class="links">
-    <a href="https://linkedin.com/in/vansh-badgayya-3ba498331" target="_blank">LinkedIn</a>
-    <a href="https://github.com/Vansh360" target="_blank">GitHub</a>
-    <a href="mailto:badgayyavansh@gmail.com">Email</a>
-  </div>
-</header>
+      <button class="nav-btn" id="menuBtn">☰ Menu</button>
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#education">Education</a>
-  <a href="#projects">Projects</a>  
-  <a href="#skills">Skills</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<section id="about">
-  <h2>Career Summary</h2>
-  <div class="card">
-    <p>
-      Enthusiastic Computer Science student with a keen interest in web development,
-      Java programming, and database management. Skilled in building responsive web
-      interfaces, working with APIs, and using MySQL for data handling.
-      Actively exploring the MERN stack and Data Structures & Algorithms through
-      self-learning and hands-on projects. Aspiring to grow as a full-stack or backend developer.
-    </p>
-  </div>
-</section>
-
-<section id="education">
-  <h2>Education</h2>
-  <div class="card">
-    <h3>Shri Ramdeobaba College of Engineering & Management, Nagpur</h3>
-    <p>B.E. in Electronics and Computer Science Engineering</p>
-    <p><strong>Duration:</strong> Aug 2023 – Present</p>
-    <p><strong>CGPA:</strong> 8.71 (Minor in IT)</p>
-  </div>
-</section>
-
-<section id="projects" class="projects">
-  <h2>Projects</h2>
-
-  <div class="card">
-    <h3>E-Commerce Platform (In Development)</h3>
-    <p>
-      Online platform connecting sellers and buyers. Features include user-responsive design
-      and implemented dark mode for improved UX.
-    </p>
-    <a href="https://vansh360.github.io/Shopping-Site/" target="_blank">Live Project</a>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#certs">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
   </div>
 
-  <div class="card">
-    <h3>Weather App (API Based)</h3>
-    <p>
-      Fetches real-time data from public APIs using JavaScript fetch().
-      Displays weather information dynamically on the webpage.
-    </p>
-    <a href="https://vansh360.github.io/Weather/" target="_blank">Live Project</a>
-  </div>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container hero-grid">
 
-  <div class="card">
-    <h3>Tic-Tac-Toe Web Application</h3>
-    <p>
-      Built using HTML, CSS, and JavaScript. Implements game logic, user interaction,
-      and win condition checks.
-    </p>
-    <a href="https://vansh360.github.io/Tic-Tac-Toe/" target="_blank">Live Project</a>
-  </div>
-</section>
+      <div class="hero-card">
+        <div class="glow"></div>
+        <div class="hero-content">
+          <div class="badge">🚀 Web Developer • Java • JavaScript</div>
 
-<section id="skills" class="skills">
-  <h2>Skills</h2>
-  <ul>
-    <li>Java</li>
-    <li>JavaScript</li>
-    <li>HTML & CSS</li>
-    <li>MySQL</li>
-    <li>API Integration</li>
-    <li>Responsive Web Design</li>
-    <li>Data Structures & Algorithms (Java)</li>
-    <li>Git & GitHub</li>
-  </ul>
-</section>
+          <h1>
+            Hi, I'm <span>Vansh Badgayya</span><br/>
+            I build modern & responsive websites.
+          </h1>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <div class="card">
-    <p><strong>Email:</strong> badgayyavansh@gmail.com</p>
-    <p><strong>Phone:</strong> +91-8237910787</p>
-    <p><strong>Location:</strong> Nagpur, Maharashtra, India</p>
-  </div>
-</section>
+          <p>
+            Enthusiastic Computer Science student with strong interest in Web Development,
+            Java programming and MySQL. I enjoy building responsive UI, working with APIs,
+            and improving skills through real projects & DSA learning.
+          </p>
 
-<footer>
-  © 2025 Vansh Badgayya | Portfolio Website
-</footer>
+          <div class="cta">
+            <a class="btn btn-primary" href="#projects">🔥 View Projects</a>
+            <a class="btn" href="https://github.com/Vansh360" target="_blank">💻 GitHub</a>
+            <a class="btn" href="https://linkedin.com/in/vansh-badgayya-3ba498331" target="_blank">🔗 LinkedIn</a>
+            <a class="btn" href="mailto:badgayyavansh@gmail.com">📩 Email</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card side-card">
+        <div>
+          <div class="profile">
+            <div class="avatar">VB</div>
+            <div>
+              <h3>Vansh Badgayya</h3>
+              <small>Nagpur, Maharashtra, India</small>
+            </div>
+          </div>
+
+          <div class="mini-info">
+            <div class="info-row">
+              <div>Role</div>
+              <span>Web Developer</span>
+            </div>
+            <div class="info-row">
+              <div>CGPA</div>
+              <span>8.71</span>
+            </div>
+            <div class="info-row">
+              <div>College</div>
+              <span>RCOEM</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mini-info">
+          <div class="info-row">
+            <div>Phone</div>
+            <span>+91 8237910787</span>
+          </div>
+          <div class="info-row">
+            <div>Email</div>
+            <span>badgayyavansh@gmail.com</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>About Me</h2>
+        <p>Career summary from my resume, polished for a professional portfolio.</p>
+      </div>
+
+      <div class="card">
+        <p>
+          Enthusiastic Computer Science student with a keen interest in web development,
+          Java programming, and database management. Skilled in building responsive web interfaces,
+          working with APIs, and using MySQL for data handling. Actively exploring the MERN stack
+          and DSA through self-learning and beginner projects. Eager to grow as a full-stack or backend developer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section" id="education">
+    <div class="container">
+      <div class="section-title">
+        <h2>Education</h2>
+        <p>My academic background and current journey.</p>
+      </div>
+
+      <div class="card">
+        <h3>Shri Ramdeobaba College of Engineering & Management, Nagpur</h3>
+        <p><b>B.E.</b> in Electronics and Computer Science Engineering (Aug 2023 – Present)</p>
+        <p><b>CGPA:</b> 8.71 | <b>Minor:</b> IT</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-title">
+        <h2>Projects</h2>
+        <p>My real work, built using HTML, CSS, JavaScript & APIs.</p>
+      </div>
+
+      <div class="grid">
+
+        <div class="card">
+          <h3>E-Commerce Platform (In Development)</h3>
+          <p>Online platform to connect sellers and buyers with responsive UI and dark mode support.</p>
+          <div class="tags">
+            <div class="tag">Responsive UI</div>
+            <div class="tag">Dark Mode</div>
+            <div class="tag">Frontend</div>
+          </div>
+          <a class="project-link" href="https://vansh360.github.io/Shopping-Site/" target="_blank">🔗 Live Project</a>
+        </div>
+
+        <div class="card">
+          <h3>Weather App (API Based)</h3>
+          <p>Fetches live weather data via fetch() and displays it dynamically on the webpage.</p>
+          <div class="tags">
+            <div class="tag">API</div>
+            <div class="tag">fetch()</div>
+            <div class="tag">JavaScript</div>
+          </div>
+          <a class="project-link" href="https://vansh360.github.io/Weather/" target="_blank">🔗 Live Project</a>
+        </div>
+
+        <div class="card">
+          <h3>Tic-Tac-Toe Web App</h3>
+          <p>A fun interactive game with logic, winning conditions, and responsive design.</p>
+          <div class="tags">
+            <div class="tag">Game Logic</div>
+            <div class="tag">DOM</div>
+            <div class="tag">JavaScript</div>
+          </div>
+          <a class="project-link" href="https://vansh360.github.io/Tic-Tac-Toe/" target="_blank">🔗 Live Project</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-title">
+        <h2>Skills</h2>
+        <p>Core skills I use for building projects and learning new technologies.</p>
+      </div>
+
+      <div class="card">
+        <div class="skill-wrap">
+          <div class="skill-chip">Java</div>
+          <div class="skill-chip">JavaScript (ES6+)</div>
+          <div class="skill-chip">HTML5</div>
+          <div class="skill-chip">CSS3</div>
+          <div class="skill-chip">MySQL</div>
+          <div class="skill-chip">API Integration</div>
+          <div class="skill-chip">Git & GitHub</div>
+          <div class="skill-chip">DSA (Java)</div>
+          <div class="skill-chip">Responsive Web Design</div>
+          <div class="skill-chip">C / Python (Basics)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="section" id="certs">
+    <div class="container">
+      <div class="section-title">
+        <h2>Certifications</h2>
+        <p>Learning and upgrading skills through certified courses.</p>
+      </div>
+
+      <div class="card">
+        <h3>Programming Foundations with JavaScript, HTML and CSS</h3>
+        <p>Duke University — 2024</p>
+      </div>
+      <div class="card">
+  <h3>Design Patent</h3>
+  <h4>MULTIPURPOSE TABLE</h4>
+  <p>Design No. : 407846-001</p>
+  <p>Date : 17/02/2024</p>
+  <p>Patent office Government of India</p>
+
+  <a class="project-link" href="https://drive.google.com/drive/folders/1jZ15ntd-AuBqUf2lkH8uDkuIjHpJHrTq?usp=sharing" target="_blank">
+    🔗 View Document
+  </a>
+</div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Let’s connect! You can reach me using the details below.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>📩 Email</h3>
+          <p><a href="mailto:badgayyavansh@gmail.com">badgayyavansh@gmail.com</a></p>
+        </div>
+
+        <div class="card">
+          <h3>📞 Phone</h3>
+          <p><a href="tel:+918237910787">+91 8237910787</a></p>
+        </div>
+
+        <div class="card">
+          <h3>🌐 Profiles</h3>
+          <p>
+            <a href="https://linkedin.com/in/vansh-badgayya-3ba498331" target="_blank">LinkedIn</a>
+            <br/>
+            <a href="https://github.com/Vansh360" target="_blank">GitHub</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Vansh Badgayya | Built with HTML + CSS + JavaScript
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // Close menu after clicking link on mobile
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+  </script>
 
 </body>
 </html>
