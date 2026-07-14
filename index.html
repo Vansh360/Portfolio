@@ -5,26 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vansh Badgayya | Portfolio</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --bg:#0b1020;
       --card: rgba(255,255,255,0.08);
+      --card-hover: rgba(255,255,255,0.12);
       --border: rgba(255,255,255,0.14);
       --text:#e5e7eb;
       --muted:#9ca3af;
       --primary:#60a5fa;
       --primary2:#a78bfa;
       --shadow: 0 20px 50px rgba(0,0,0,.35);
+      --font-display: "Sora", sans-serif;
+      --font-body: "Poppins", sans-serif;
     }
 
     *{
       margin:0;
       padding:0;
       box-sizing:border-box;
-      font-family:"Poppins",sans-serif;
+      font-family: var(--font-body);
     }
+
+    html{ scroll-behavior: smooth; }
 
     body{
       background: radial-gradient(1200px 600px at 20% 10%, rgba(96,165,250,.25), transparent 60%),
@@ -36,6 +42,8 @@
     }
 
     a{ color:inherit; text-decoration:none; }
+
+    ::selection{ background: rgba(96,165,250,.35); }
 
     /* container */
     .container{
@@ -65,7 +73,8 @@
       align-items:center;
       gap:10px;
       font-weight:700;
-      letter-spacing:0.5px;
+      letter-spacing:0.3px;
+      font-family: var(--font-display);
     }
 
     .brand-badge{
@@ -77,6 +86,7 @@
       place-items:center;
       font-weight:800;
       color:#0b1020;
+      font-family: var(--font-display);
     }
 
     .nav-links{
@@ -130,6 +140,15 @@
       padding: 28px;
       overflow:hidden;
       position:relative;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: rise .7s ease forwards;
+    }
+
+    .hero-grid .hero-card:nth-child(2){ animation-delay: .12s; }
+
+    @keyframes rise{
+      to{ opacity:1; transform: translateY(0); }
     }
 
     .glow{
@@ -162,6 +181,8 @@
 
     .hero h1{
       margin-top:14px;
+      font-family: var(--font-display);
+      font-weight: 800;
       font-size: clamp(2rem, 3.5vw, 3.1rem);
       line-height:1.15;
       letter-spacing:0.2px;
@@ -241,11 +262,25 @@
       font-weight:800;
       color:#0b1020;
       font-size:1.1rem;
+      font-family: var(--font-display);
+      position:relative;
+      overflow:hidden;
+      flex-shrink:0;
+    }
+
+    .avatar img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:none;
     }
 
     .profile h3{
       font-size:1.05rem;
       margin-bottom:2px;
+      font-family: var(--font-display);
     }
 
     .profile small{
@@ -291,6 +326,8 @@
     }
 
     .section-title h2{
+      font-family: var(--font-display);
+      font-weight: 700;
       font-size: clamp(1.5rem, 2.2vw, 2.1rem);
     }
 
@@ -314,20 +351,28 @@
       border-radius:18px;
       box-shadow: var(--shadow);
       padding:20px;
-      transition: .25s ease;
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
       position:relative;
       overflow:hidden;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    .card.in-view{
+      animation: rise .6s ease forwards;
     }
 
     .card:hover{
       transform: translateY(-6px);
       border-color: rgba(255,255,255,0.22);
+      background: var(--card-hover);
     }
 
     .card h3{
       color: var(--text);
       margin-bottom: 6px;
       font-size:1.1rem;
+      font-family: var(--font-display);
     }
 
     .card p{
@@ -352,16 +397,16 @@
       color: var(--muted);
     }
 
-    .card a.project-link{
+    .project-link{
       margin-top: 14px;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      font-weight:700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
       color: var(--primary);
     }
 
-    .card a.project-link:hover{
+    .project-link:hover{
       text-decoration: underline;
     }
 
@@ -380,12 +425,12 @@
       border:1px solid rgba(255,255,255,0.12);
       color: var(--text);
       font-weight:700;
-      transition: .25s ease;
+      transition: transform .25s ease, border-color .25s ease;
     }
 
     .skill-chip:hover{
       transform: translateY(-3px);
-      border-color: rgba(255,255,255,0.22);
+      border-color: var(--primary);
     }
 
     /* FOOTER */
@@ -395,6 +440,126 @@
       border-top:1px solid rgba(255,255,255,0.08);
       text-align:center;
       font-weight:600;
+    }
+
+    /* EDIT FAB */
+    .edit-fab{
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(20,24,42,0.65);
+      backdrop-filter: blur(10px);
+      color: var(--muted);
+      font-size: 1rem;
+      cursor: pointer;
+      opacity: 0.35;
+      transition: opacity .25s ease, transform .25s ease, color .25s ease;
+      z-index: 300;
+      display:grid;
+      place-items:center;
+    }
+
+    .edit-fab:hover{
+      opacity: 1;
+      color: var(--text);
+      transform: translateY(-2px);
+      border-color: var(--primary);
+    }
+
+    /* MODAL */
+    .modal-backdrop{
+      position: fixed;
+      inset: 0;
+      background: rgba(4,6,14,0.72);
+      backdrop-filter: blur(4px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index: 400;
+      padding: 20px;
+    }
+
+    .modal-backdrop.active{
+      display:flex;
+    }
+
+    .modal{
+      width: min(460px, 100%);
+      background: #0e1426;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      max-height: 88vh;
+      overflow-y: auto;
+    }
+
+    .modal h3{
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+
+    .modal .muted{
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height:1.5;
+    }
+
+    .modal label{
+      display:block;
+      margin-top: 18px;
+      margin-bottom: 8px;
+      font-weight:700;
+      font-size: 0.9rem;
+    }
+
+    .modal input[type="file"]{
+      width:100%;
+      color: var(--muted);
+      font-size: 0.85rem;
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px dashed rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.04);
+    }
+
+    #photoPreviewWrap{
+      margin-top: 12px;
+      display:none;
+      align-items:center;
+      gap:12px;
+    }
+
+    #photoPreviewWrap img{
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    #resumeFileName{
+      margin-top: 8px;
+      font-size: 0.85rem;
+    }
+
+    .modal-actions{
+      margin-top: 22px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+    }
+
+    .modal-actions .btn{
+      flex: 1;
+      justify-content:center;
+      font-size: 0.85rem;
+      padding: 10px 12px;
     }
 
     /* RESPONSIVE */
@@ -433,25 +598,17 @@
       .grid{
         grid-template-columns: 1fr;
       }
+
+      .edit-fab{
+        right: 14px;
+        bottom: 14px;
+      }
     }
 
-    .project-link{
-  margin-top: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 700;
-  color: var(--primary);
-}
-
-.project-link:hover{
-  text-decoration: underline;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-</style>
+    @media (prefers-reduced-motion: reduce){
+      *{ animation: none !important; transition: none !important; }
+    }
+  </style>
 </head>
 
 <body>
@@ -502,6 +659,7 @@ html {
 
           <div class="cta">
             <a class="btn btn-primary" href="#projects">🔥 View Projects</a>
+            <a class="btn" id="resumeBtn" href="#" rel="noopener">📄 Resume</a>
             <a class="btn" href="https://codolio.com/profile/Vansh_2005" target="_blank">📊 Codolio </a>
             <a class="btn" href="https://github.com/Vansh360" target="_blank">💻 GitHub</a>
             <a class="btn" href="https://linkedin.com/in/vansh-badgayya-3ba498331" target="_blank">🔗 LinkedIn</a>
@@ -513,7 +671,10 @@ html {
       <div class="hero-card side-card">
         <div>
           <div class="profile">
-            <div class="avatar">VB</div>
+            <div class="avatar" id="avatarWrap">
+              <span id="avatarInitials">VB</span>
+              <img id="avatarImg" alt="Vansh Badgayya">
+            </div>
             <div>
               <h3>Vansh Badgayya</h3>
               <small>Nagpur, Maharashtra, India</small>
@@ -527,7 +688,7 @@ html {
             </div>
             <div class="info-row">
               <div>CGPA</div>
-              <span>8.71</span>
+              <span>8.62</span>
             </div>
             <div class="info-row">
               <div>College</div>
@@ -581,40 +742,41 @@ html {
       <div class="card">
         <h3>Shri Ramdeobaba College of Engineering & Management, Nagpur</h3>
         <p><b>B.E.</b> in Electronics and Computer Science Engineering (Aug 2023 – Present)</p>
-        <p><b>CGPA:</b> 8.71 | <b>Minor:</b> IT</p>
+        <p><b>CGPA:</b> 8.62 | <b>Minor:</b> IT</p>
       </div>
     </div>
   </section>
-<!-- EXPERIENCE -->
-<section class="section" id="experience">
-  <div class="container">
-    <div class="section-title">
-      <h2>Work Experience</h2>
-      <p>My professional internship experience in frontend and backend development.</p>
-    </div>
 
-    <div class="card">
-      <h3>Web Developer Intern — Amigoestech</h3>
-      <p><b>Role:</b> Frontend & Backend Developer (MERN Stack)</p>
-      <p><b>Location:</b> Nagpur, Maharashtra, India</p>
-      <p><b>Duration:</b> 1 Jan 2026 – 31 Mar 2026</p>
-
-      <div class="tags">
-        <div class="tag">React.js</div>
-        <div class="tag">MERN Stack</div>
-        <div class="tag">REST APIs</div>
-        <div class="tag">MySQL</div>
-        <div class="tag">Database Optimization</div>
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-title">
+        <h2>Work Experience</h2>
+        <p>My professional internship experience in frontend and backend development.</p>
       </div>
 
-      <p style="margin-top:14px;">
-        • Developed and maintained responsive web applications using React.js and the MERN stack to improve user engagement and site performance.<br><br>
-        • Collaborated with senior developers to design and implement RESTful APIs, ensuring seamless data handling with MySQL and backend services.<br><br>
-        • Optimized database queries and front-end components, resulting in a more efficient and user-friendly experience for client-facing platforms.
-      </p>
+      <div class="card">
+        <h3>Web Developer Intern — Amigoestech</h3>
+        <p><b>Role:</b> Frontend & Backend Developer (MERN Stack)</p>
+        <p><b>Location:</b> Nagpur, Maharashtra, India</p>
+        <p><b>Duration:</b> 1 Jan 2026 – 6 June 2026</p>
+
+        <div class="tags">
+          <div class="tag">React.js</div>
+          <div class="tag">MERN Stack</div>
+          <div class="tag">REST APIs</div>
+          <div class="tag">MySQL</div>
+          <div class="tag">Database Optimization</div>
+        </div>
+
+        <p style="margin-top:14px;">
+          • Developed and maintained responsive web applications using React.js and the MERN stack to improve user engagement and site performance.<br><br>
+          • Collaborated with senior developers to design and implement RESTful APIs, ensuring seamless data handling with MySQL and backend services.<br><br>
+          • Optimized database queries and front-end components, resulting in a more efficient and user-friendly experience for client-facing platforms.
+        </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
   <!-- PROJECTS -->
@@ -638,7 +800,7 @@ html {
           <a class="project-link" href="https://vansh360.github.io/Shopping-Site/" target="_blank">🔗 Live Project</a>
         </div>
 
-         <div class="card">
+        <div class="card">
           <h3>Customer Churn Prediction App</h3>
           <p>A Machine Learning–powered Customer Churn Prediction web application built with
 Streamlit. It predicts whether a telecom customer is likely to churn or stay, based on
@@ -646,8 +808,7 @@ their account and service details.</p>
           <a class="project-link" href="https://customer-churn-prediction-9ckohz9yyre5vptf6tf5ro.streamlit.app/" target="_blank">🔗 Live Project</a>
         </div>
 
-
-         <div class="card">
+        <div class="card">
           <h3>School Website Project </h3>
           <p>I have created a school website using react.js in which full responsive website have been created .
 This website contains all the information regarding the school and academics. </p>
@@ -659,10 +820,7 @@ This website contains all the information regarding the school and academics. </
           <a class="project-link" href="https://vansh360.github.io/SVH/" target="_blank">🔗 Live Project</a>
         </div>
 
-
-
-
-        <!-- <div class="card">
+        <div class="card">
           <h3>Weather App (API Based)</h3>
           <p>Fetches live weather data via fetch() and displays it dynamically on the webpage.</p>
           <div class="tags">
@@ -671,9 +829,9 @@ This website contains all the information regarding the school and academics. </
             <div class="tag">JavaScript</div>
           </div>
           <a class="project-link" href="https://vansh360.github.io/Weather/" target="_blank">🔗 Live Project</a>
-        </div> -->
+        </div>
 
-        <!-- <div class="card">
+        <div class="card">
           <h3>Tic-Tac-Toe Web App</h3>
           <p>A fun interactive game with logic, winning conditions, and responsive design.</p>
           <div class="tags">
@@ -682,7 +840,7 @@ This website contains all the information regarding the school and academics. </
             <div class="tag">JavaScript</div>
           </div>
           <a class="project-link" href="https://vansh360.github.io/Tic-Tac-Toe/" target="_blank">🔗 Live Project</a>
-        </div> -->
+        </div>
 
       </div>
     </div>
@@ -725,21 +883,21 @@ This website contains all the information regarding the school and academics. </
       <div class="card">
         <h3>Programming Foundations with JavaScript, HTML and CSS</h3>
         <p>Duke University — 2024</p>
-         <a class="project-link" href="https://drive.google.com/file/d/1b7jDs0yBNOMXyALvphbQbTOWbgPWAelE/view?usp=drive_link" target="_blank">
-    🔗 View Document
-  </a>
+        <a class="project-link" href="https://drive.google.com/file/d/1b7jDs0yBNOMXyALvphbQbTOWbgPWAelE/view?usp=drive_link" target="_blank">
+          🔗 View Document
+        </a>
       </div>
       <div class="card">
-  <h3>Design Patent</h3>
-  <h4>MULTIPURPOSE TABLE</h4>
-  <p>Design No. : 407846-001</p>
-  <p>Date : 17/02/2024</p>
-  <p>Patent office Government of India</p>
+        <h3>Design Patent</h3>
+        <h4>MULTIPURPOSE TABLE</h4>
+        <p>Design No. : 407846-001</p>
+        <p>Date : 17/02/2024</p>
+        <p>Patent office Government of India</p>
 
-  <a class="project-link" href="https://drive.google.com/file/d/1pSZl3oI8U9QSU2GN_Wls_bPnCfr69-oP/view?usp=drive_link" target="_blank">
-    🔗 View Document
-  </a>
-</div>
+        <a class="project-link" href="https://drive.google.com/file/d/1pSZl3oI8U9QSU2GN_Wls_bPnCfr69-oP/view?usp=drive_link" target="_blank">
+          🔗 View Document
+        </a>
+      </div>
 
     </div>
   </section>
@@ -773,16 +931,55 @@ This website contains all the information regarding the school and academics. </
             <a href="https://codolio.com/profile/Vansh_2005" target="_blank">Codolio</a>
           </p>
         </div>
+
+        <div class="card">
+          <h3>📄 Resume</h3>
+          <p id="contactResumeText">Not uploaded yet — click the edit button in the corner to add it.</p>
+          <a class="project-link" id="contactResumeLink" href="#" style="display:none;">🔗 Download Resume</a>
+        </div>
       </div>
     </div>
   </section>
 
- <footer>
-  © 2025 Vansh Badgayya | Designed & Developed by Me
-</footer>
+  <footer>
+    © <span id="year">2026</span> Vansh Badgayya | Designed & Developed by Me
+  </footer>
+
+  <!-- EDIT FAB (only meaningful to the site owner) -->
+  <button class="edit-fab" id="editTrigger" title="Edit photo & resume">✎</button>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal">
+      <h3>Edit profile photo & resume</h3>
+      <p class="muted">
+        These are saved in <b>this browser only</b>, so only you'll see the change while editing.
+        When you're happy with it, click <b>Download updated site</b> and re-upload that file
+        wherever your portfolio is hosted — that's what makes it visible to everyone else.
+      </p>
+
+      <label for="photoInput">Profile photo</label>
+      <input type="file" id="photoInput" accept="image/*">
+      <div id="photoPreviewWrap">
+        <img id="photoPreview" alt="Preview">
+        <span class="muted">Preview</span>
+      </div>
+
+      <label for="resumeInput">Resume (PDF)</label>
+      <input type="file" id="resumeInput" accept="application/pdf">
+      <div id="resumeFileName" class="muted">No resume uploaded yet.</div>
+
+      <div class="modal-actions">
+        <button class="btn" id="clearBtn">Reset</button>
+        <button class="btn btn-primary" id="exportBtn">⬇ Download updated site</button>
+      </div>
+      <div class="modal-actions">
+        <button class="btn" id="closeModalBtn" style="width:100%;">Close</button>
+      </div>
+    </div>
+  </div>
 
   <script>
-    // Mobile Menu Toggle
+    // ---------- Mobile menu ----------
     const menuBtn = document.getElementById("menuBtn");
     const navLinks = document.getElementById("navLinks");
 
@@ -790,11 +987,168 @@ This website contains all the information regarding the school and academics. </
       navLinks.classList.toggle("active");
     });
 
-    // Close menu after clicking link on mobile
     document.querySelectorAll(".nav-links a").forEach(link => {
       link.addEventListener("click", () => {
         navLinks.classList.remove("active");
       });
+    });
+
+    // ---------- Footer year ----------
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ---------- Scroll reveal for cards ----------
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".card").forEach(card => revealObserver.observe(card));
+
+    // ---------- Avatar / Resume: elements ----------
+    const avatarImg = document.getElementById("avatarImg");
+    const avatarInitials = document.getElementById("avatarInitials");
+    const resumeBtn = document.getElementById("resumeBtn");
+    const contactResumeText = document.getElementById("contactResumeText");
+    const contactResumeLink = document.getElementById("contactResumeLink");
+
+    const STORAGE_AVATAR = "vb_avatar_dataurl";
+    const STORAGE_RESUME = "vb_resume_dataurl";
+    const STORAGE_RESUME_NAME = "vb_resume_filename";
+
+    function applyAvatar(dataUrl) {
+      if (!dataUrl) return;
+      avatarImg.src = dataUrl;
+      avatarImg.style.display = "block";
+      avatarInitials.style.display = "none";
+    }
+
+    function applyResume(dataUrl, filename) {
+      if (!dataUrl) return;
+      resumeBtn.href = dataUrl;
+      resumeBtn.setAttribute("download", filename || "Vansh_Badgayya_Resume.pdf");
+      resumeBtn.dataset.ready = "1";
+
+      contactResumeLink.href = dataUrl;
+      contactResumeLink.setAttribute("download", filename || "Vansh_Badgayya_Resume.pdf");
+      contactResumeLink.style.display = "inline-flex";
+      contactResumeText.style.display = "none";
+    }
+
+    // Load saved data on page load
+    (function loadSaved() {
+      try {
+        const savedAvatar = localStorage.getItem(STORAGE_AVATAR);
+        const savedResume = localStorage.getItem(STORAGE_RESUME);
+        const savedResumeName = localStorage.getItem(STORAGE_RESUME_NAME);
+        if (savedAvatar) applyAvatar(savedAvatar);
+        if (savedResume) applyResume(savedResume, savedResumeName);
+      } catch (e) {
+        console.warn("Could not load saved profile data:", e);
+      }
+    })();
+
+    // Resume button: if no resume yet, open the editor instead of navigating
+    resumeBtn.addEventListener("click", (e) => {
+      if (!resumeBtn.dataset.ready) {
+        e.preventDefault();
+        openModal();
+        document.getElementById("resumeInput").focus();
+      }
+    });
+
+    // ---------- Modal open/close ----------
+    const modalBackdrop = document.getElementById("modalBackdrop");
+    const editTrigger = document.getElementById("editTrigger");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+
+    function openModal() { modalBackdrop.classList.add("active"); }
+    function closeModal() { modalBackdrop.classList.remove("active"); }
+
+    editTrigger.addEventListener("click", openModal);
+    closeModalBtn.addEventListener("click", closeModal);
+    modalBackdrop.addEventListener("click", (e) => {
+      if (e.target === modalBackdrop) closeModal();
+    });
+
+    // ---------- File inputs ----------
+    const photoInput = document.getElementById("photoInput");
+    const photoPreviewWrap = document.getElementById("photoPreviewWrap");
+    const photoPreview = document.getElementById("photoPreview");
+    const resumeInput = document.getElementById("resumeInput");
+    const resumeFileName = document.getElementById("resumeFileName");
+
+    photoInput.addEventListener("change", () => {
+      const file = photoInput.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        const dataUrl = reader.result;
+        photoPreview.src = dataUrl;
+        photoPreviewWrap.style.display = "flex";
+        applyAvatar(dataUrl);
+        try { localStorage.setItem(STORAGE_AVATAR, dataUrl); } catch (e) { console.warn("Storage full:", e); }
+      };
+      reader.readAsDataURL(file);
+    });
+
+    resumeInput.addEventListener("change", () => {
+      const file = resumeInput.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        const dataUrl = reader.result;
+        resumeFileName.textContent = "Selected: " + file.name;
+        applyResume(dataUrl, file.name);
+        try {
+          localStorage.setItem(STORAGE_RESUME, dataUrl);
+          localStorage.setItem(STORAGE_RESUME_NAME, file.name);
+        } catch (e) { console.warn("Storage full:", e); }
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // ---------- Reset ----------
+    document.getElementById("clearBtn").addEventListener("click", () => {
+      localStorage.removeItem(STORAGE_AVATAR);
+      localStorage.removeItem(STORAGE_RESUME);
+      localStorage.removeItem(STORAGE_RESUME_NAME);
+      avatarImg.style.display = "none";
+      avatarImg.src = "";
+      avatarInitials.style.display = "block";
+      resumeBtn.removeAttribute("href");
+      resumeBtn.href = "#";
+      delete resumeBtn.dataset.ready;
+      resumeBtn.removeAttribute("download");
+      contactResumeLink.style.display = "none";
+      contactResumeText.style.display = "block";
+      photoPreviewWrap.style.display = "none";
+      resumeFileName.textContent = "No resume uploaded yet.";
+      photoInput.value = "";
+      resumeInput.value = "";
+    });
+
+    // ---------- Export updated site (bakes current photo/resume into the HTML) ----------
+    document.getElementById("exportBtn").addEventListener("click", () => {
+      // Temporarily close the modal so it isn't captured in an "open" state
+      const wasActive = modalBackdrop.classList.contains("active");
+      modalBackdrop.classList.remove("active");
+
+      const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: "text/html" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "index.html";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      if (wasActive) modalBackdrop.classList.add("active");
     });
   </script>
 
